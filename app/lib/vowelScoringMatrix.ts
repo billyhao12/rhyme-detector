@@ -150,3 +150,5 @@ const vowelScoringMatrix = {
     UW: 3.1
   }
 };
+
+export default vowelScoringMatrix;
