@@ -1,14 +1,16 @@
 class Syllable {
-    startingConsonants: Array<string> = [];
-    #vowel: string = '';
-    endingConsonants: Array<string> = [];
-
     #stress: number = -1;
+    #wordLength: number = 1;
+    #wordPosition: number = 0;
+
+    #startingConsonants: Array<string> = [];
+    #vowel: string = '';
+    #endingConsonants: Array<string> = [];
 
     constructor(startingConsonants: Array<string>, vowel: string, endingConsonants: Array<string>) {
-        this.startingConsonants = startingConsonants;
+        this.#startingConsonants = startingConsonants;
         this.#parseVowel(vowel);
-        this.endingConsonants = endingConsonants;
+        this.#endingConsonants = endingConsonants;
     }
 
     #parseVowel(vowel: string) {
@@ -20,4 +22,43 @@ class Syllable {
             this.#vowel = vowel;
         }
     }
-};
+
+    addEndingConsonant(endingConsonant: string) {
+        this.#endingConsonants.push(endingConsonant);
+    }
+
+    removeStartingConsonants() {
+        this.#startingConsonants.length = 0;
+    }
+
+    set startingConsonants(value: Array<string>) {
+        this.#startingConsonants = value;
+    }
+
+    equals(other: Syllable): boolean {
+        if (this.#vowel !== other.#vowel) return false;
+        if (this.#stress !== other.#stress) return false;
+        if (this.#startingConsonants.length !== other.#startingConsonants.length) return false;
+        if (this.#endingConsonants.length !== other.#endingConsonants.length) return false;
+        for (let i = 0; i < this.#startingConsonants.length; i++) {
+            if (this.#startingConsonants[i] !== other.#startingConsonants[i]) return false;
+        }
+        for (let i = 0; i < this.#endingConsonants.length; i++) {
+            if (this.#endingConsonants[i] !== other.#endingConsonants[i]) return false;
+        }
+
+        return true;
+    }
+
+    get stress(): number {
+        return this.#stress;
+    }
+
+    get vowel(): string {
+        if (this.#stress < 0) {
+            return this.#vowel;
+        } else {
+            return this.#vowel + this.#stress;
+        }
+    }
+}
