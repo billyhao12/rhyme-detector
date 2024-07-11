@@ -61,4 +61,36 @@ class Syllable {
             return this.#vowel + this.#stress;
         }
     }
+
+    get startingConsonants(): Array<string> {
+        return this.#startingConsonants;
+    }
+
+    get endingConsonants(): Array<string> {
+        return this.#endingConsonants;
+    }
+
+    hasStress(): boolean {
+        return this.#stress >= 0;
+    }
+
+    setWord(length: number, position: number) {
+        this.#wordLength = length;
+        this.#wordPosition = position;
+    }
+
+    get wordLength(): number {
+        return this.#wordLength;
+    }
+
+    get wordPosition(): number {
+        return this.#wordPosition;
+    }
+
+    toString(): string {
+        return this.startingConsonants.toString() + " "
+                + this.vowel
+                + (this.hasStress() ? this.stress : "") + " "
+                + this.endingConsonants.toString();
+    }
 }
