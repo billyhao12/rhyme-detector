@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import clsx from "clsx";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
           name="lyricsInput"
           className={styles.lyricsInput}
         />
-        <button type="submit">Highlight Rhymes</button>
+        <button type="submit" className={clsx(styles.btn, styles.btnBlue)}>Highlight Rhymes</button>
       </form>
     </main>
   );
