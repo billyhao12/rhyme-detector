@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <h1 className={styles.heading}>Rhyme Detector</h1>
       <form className={styles.form}>
-        <label htmlFor="lyricsInput">Enter Rap Lyrics!</label>
+        <label htmlFor="lyricsInput">Enter rap lyrics to highlight below</label>
         <textarea
           id="lyricsInput"
           name="lyricsInput"
