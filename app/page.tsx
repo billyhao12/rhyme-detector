@@ -14,7 +14,16 @@ export default function Home() {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log(lyricsInputRef.current?.innerText);
+
+    const userInputLyrics = lyricsInputRef.current?.innerText;
+    console.log({ userInputLyrics });
+
+    if (userInputLyrics) {
+      const lines = userInputLyrics.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        console.log(`line ${i}: ${lines[i]}`);
+      }
+    }
   };
 
   return (
