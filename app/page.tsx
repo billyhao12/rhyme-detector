@@ -27,15 +27,15 @@ export default function Home() {
   // };
 
   return (
-    <main className="w-full flex flex-col p-8">
-      <h1 className="w-full flex justify-center p-4 text-3xl">
+    <main className={styles.main}>
+      <h1 className={styles.title}>
         Rhyme Detector
       </h1>
       <form className="container mx-auto p-4">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
           <div className="col-span-1 lg:col-span-2 p-4">
-            <div>Enter lyrics to highlight below</div>
-            <textarea className="w-full h-screen p-4" />
+            <div className="p-4">Enter lyrics to highlight below</div>
+            <textarea className="w-full h-screen text-black p-4" />
           </div>
           <div className="col-span-1 p-4 flex justify-center items-center">
             <button type="submit" className={clsx(styles.btn, styles.btnBlue)}>
@@ -43,6 +43,7 @@ export default function Home() {
             </button>
           </div>
           <div className="col-span-1 lg:col-span-2 p-4">
+            <div className="p-4">Highlighted rhymes</div>
             <div className="w-full bg-white h-screen text-black p-4">
               <span>test</span>
             </div>
