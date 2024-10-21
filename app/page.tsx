@@ -31,20 +31,20 @@ export default function Home() {
       <h1 className={styles.title}>
         Rhyme Detector
       </h1>
-      <form className="container mx-auto p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          <div className="col-span-1 lg:col-span-2 p-4">
-            <div className="p-4">Enter lyrics to highlight below</div>
-            <textarea className="w-full h-screen text-black p-4" />
+      <form className={styles.form}>
+        <div className={styles.mainGrid}>
+          <div className={styles.lyricsContainers}>
+            <div className="py-4">Enter lyrics to highlight below</div>
+            <textarea className={styles.lyricsInput} />
           </div>
-          <div className="col-span-1 p-4 flex justify-center items-center">
+          <div className={styles.middleContainer}>
             <button type="submit" className={clsx(styles.btn, styles.btnBlue)}>
               Highlight Rhymes
             </button>
           </div>
-          <div className="col-span-1 lg:col-span-2 p-4">
-            <div className="p-4">Highlighted rhymes</div>
-            <div className="w-full bg-white h-screen text-black p-4">
+          <div className={styles.lyricsContainers}>
+            <div className="py-4">Highlighted rhymes</div>
+            <div className={styles.lyricsOutput}>
               <span>test</span>
             </div>
           </div>
