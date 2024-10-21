@@ -32,17 +32,17 @@ export default function Home() {
         Rhyme Detector
       </h1>
       <form className="container mx-auto p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="p-4">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          <div className="col-span-1 lg:col-span-2 p-4">
             <div>Enter lyrics to highlight below</div>
             <textarea className="w-full h-screen p-4" />
           </div>
-          <div className="p-4 flex justify-center items-center">
+          <div className="col-span-1 p-4 flex justify-center items-center">
             <button type="submit" className={clsx(styles.btn, styles.btnBlue)}>
               Highlight Rhymes
             </button>
           </div>
-          <div className="p-4">
+          <div className="col-span-1 lg:col-span-2 p-4">
             <div className="w-full bg-white h-screen text-black p-4">
               <span>test</span>
             </div>
