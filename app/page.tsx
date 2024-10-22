@@ -1,30 +1,10 @@
 "use client";
+import { useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
-import { FormEvent, MutableRefObject, useEffect, useRef } from "react";
 
 export default function Home() {
-  // const lyricsInputRef: MutableRefObject<null | HTMLDivElement> = useRef(null);
-
-  // useEffect(() => {
-  //   if (lyricsInputRef.current) {
-  //     lyricsInputRef.current.focus();
-  //   }
-  // }, []);
-
-  // const handleSubmit = (event: FormEvent) => {
-  //   event.preventDefault();
-
-  //   const userInputLyrics = lyricsInputRef.current?.innerText;
-  //   console.log({ userInputLyrics });
-
-  //   if (userInputLyrics) {
-  //     const lines = userInputLyrics.split("\n");
-  //     for (let i = 0; i < lines.length; i++) {
-  //       console.log(`line ${i}: ${lines[i]}`);
-  //     }
-  //   }
-  // };
+  const [lyricsInput, setLyricsInput] = useState("");
 
   return (
     <main className={styles.main}>
@@ -39,6 +19,8 @@ export default function Home() {
               <textarea
                 id="lyricsInput"
                 name="lyricsInput"
+                value={lyricsInput}
+                onChange={(e) => setLyricsInput(e.target.value)}
                 className={styles.lyricsInput}
               />
             </div>
