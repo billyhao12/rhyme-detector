@@ -33,8 +33,14 @@ export default function Home() {
         <div className={styles.mainGrid}>
           <form className={styles.form}>
             <div className={styles.lyricsInputContainer}>
-              <div className="py-4">Enter lyrics to highlight below</div>
-              <textarea className={styles.lyricsInput} />
+              <label htmlFor="lyricsInput" className="block py-4">
+                Enter lyrics to highlight below
+              </label>
+              <textarea
+                id="lyricsInput"
+                name="lyricsInput"
+                className={styles.lyricsInput}
+              />
             </div>
             <div className={styles.middleContainer}>
               <button
