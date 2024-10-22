@@ -28,28 +28,31 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>
-        Rhyme Detector
-      </h1>
-      <form className={styles.form}>
+      <h1 className={styles.title}>Rhyme Detector</h1>
+      <div className={styles.mainContainer}>
         <div className={styles.mainGrid}>
-          <div className={styles.lyricsContainers}>
-            <div className="py-4">Enter lyrics to highlight below</div>
-            <textarea className={styles.lyricsInput} />
-          </div>
-          <div className={styles.middleContainer}>
-            <button type="submit" className={clsx(styles.btn, styles.btnBlue)}>
-              Highlight Rhymes
-            </button>
-          </div>
-          <div className={styles.lyricsContainers}>
+          <form className={styles.form}>
+            <div className={styles.lyricsInputContainer}>
+              <div className="py-4">Enter lyrics to highlight below</div>
+              <textarea className={styles.lyricsInput} />
+            </div>
+            <div className={styles.middleContainer}>
+              <button
+                type="submit"
+                className={clsx(styles.btn, styles.btnBlue)}
+              >
+                Highlight Rhymes
+              </button>
+            </div>
+          </form>
+          <div className={styles.lyricsOutputContainer}>
             <div className="py-4">Highlighted rhymes</div>
             <div className={styles.lyricsOutput}>
               <span>test</span>
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </main>
   );
 }
