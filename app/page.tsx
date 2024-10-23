@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
 import multisyllableApi from "./lib/api/Multisyllable";
@@ -30,7 +30,7 @@ export default function Home() {
         return clsxResult;
     };
 
-    const createSpanTag = (word: string, style: Array<string>) => {
+    const createSpanEl = (word: string, style: Array<string>) => {
         const clsxResult = createClsxForWord(word, style);
         return <span className={clsx(...clsxResult)}>{word}</span>;
     };
@@ -47,9 +47,15 @@ export default function Home() {
             for (let i = 0; i < outputLyricsData.length; i++) {
                 const line = outputLyricsData[i];
                 for (let j = 0; j < line.length; j++) {
-                    lyricsOutputInProgress.push(
-                        createSpanTag(line[j].word, line[j].style)
+                    const spanEl = (
+                        <Fragment>
+                            {createSpanEl(line[j].word, line[j].style)}
+                            {/* add a space after the span element if it's not the last word in the line */}
+                            {j < line.length - 1 ? " " : ""}
+                        </Fragment>
                     );
+
+                    lyricsOutputInProgress.push(spanEl);
                 }
                 lyricsOutputInProgress.push(<br />);
             }
