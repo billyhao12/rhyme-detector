@@ -2,16 +2,25 @@
 import { useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
+import multisyllableApi from "./lib/api/Multisyllable";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
+
+    const handleSubmit = async (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        const axiosData = await multisyllableApi.highlightMultisyllableRhymes({
+            lyrics: lyricsInput
+        });
+        console.log("axiosData", axiosData);
+    };
 
     return (
         <main className={styles.main}>
             <h1 className={styles.title}>Rhyme Detector</h1>
             <div className={styles.mainContainer}>
                 <div className={styles.mainGrid}>
-                    <form className={styles.form}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.lyricsInputContainer}>
                             <label htmlFor="lyricsInput" className="block py-4">
                                 Enter lyrics to highlight below
