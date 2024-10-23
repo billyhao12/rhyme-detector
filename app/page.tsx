@@ -6,7 +6,34 @@ import multisyllableApi from "./lib/api/Multisyllable";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
-    const [lyricsOutput, setLyricsOutput] = useState("");
+    const [lyricsOutput, setLyricsOutput] = useState<Array<JSX.Element>>([]);
+
+    const createClsxForWord = (word: string, style: Array<string>) => {
+        let clsxResult = [];
+
+        let containsTwoTextDecorations = false;
+        if (style.includes("underline") && style.includes("strikethrough")) {
+            containsTwoTextDecorations = true;
+            clsxResult.push(styles.underlineAndStrikethrough);
+        }
+
+        for (let i = 0; i < style.length; i++) {
+            if (containsTwoTextDecorations) {
+                if (style[i] === "underline" || style[i] === "strikethrough") {
+                    continue;
+                }
+            }
+
+            clsxResult.push(styles[style[i]]);
+        }
+
+        return clsxResult;
+    };
+
+    const createSpanTag = (word: string, style: Array<string>) => {
+        const clsxResult = createClsxForWord(word, style);
+        return <span className={clsx(...clsxResult)}>{word}</span>;
+    };
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
@@ -15,14 +42,16 @@ export default function Home() {
         });
 
         const outputLyricsData = axiosData?.data?.lyrics;
-        let lyricsOutputInProgress = "";
+        const lyricsOutputInProgress = [];
         if (outputLyricsData) {
             for (let i = 0; i < outputLyricsData.length; i++) {
                 const line = outputLyricsData[i];
                 for (let j = 0; j < line.length; j++) {
-                    lyricsOutputInProgress += `<span>${line[j].word}</span> `;
+                    lyricsOutputInProgress.push(
+                        createSpanTag(line[j].word, line[j].style)
+                    );
                 }
-                lyricsOutputInProgress += "<br>";
+                lyricsOutputInProgress.push(<br />);
             }
 
             setLyricsOutput(lyricsOutputInProgress);
@@ -58,10 +87,9 @@ export default function Home() {
                     </form>
                     <div className={styles.lyricsOutputContainer}>
                         <div className="py-4">Highlighted rhymes</div>
-                        <div
-                            className={styles.lyricsOutput}
-                            dangerouslySetInnerHTML={{ __html: lyricsOutput }}
-                        />
+                        <div className={styles.lyricsOutput}>
+                            {lyricsOutput.map((spanEl) => spanEl)}
+                        </div>
                     </div>
                 </div>
             </div>
