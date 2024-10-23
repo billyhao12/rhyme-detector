@@ -6,13 +6,27 @@ import multisyllableApi from "./lib/api/Multisyllable";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
+    const [lyricsOutput, setLyricsOutput] = useState("");
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         const axiosData = await multisyllableApi.highlightMultisyllableRhymes({
             lyrics: lyricsInput
         });
-        console.log("axiosData", axiosData);
+
+        const outputLyricsData = axiosData?.data?.lyrics;
+        let lyricsOutputInProgress = "";
+        if (outputLyricsData) {
+            for (let i = 0; i < outputLyricsData.length; i++) {
+                const line = outputLyricsData[i];
+                for (let j = 0; j < line.length; j++) {
+                    lyricsOutputInProgress += `<span>${line[j].word}</span> `;
+                }
+                lyricsOutputInProgress += "<br>";
+            }
+
+            setLyricsOutput(lyricsOutputInProgress);
+        }
     };
 
     return (
@@ -44,9 +58,10 @@ export default function Home() {
                     </form>
                     <div className={styles.lyricsOutputContainer}>
                         <div className="py-4">Highlighted rhymes</div>
-                        <div className={styles.lyricsOutput}>
-                            <span>test</span>
-                        </div>
+                        <div
+                            className={styles.lyricsOutput}
+                            dangerouslySetInnerHTML={{ __html: lyricsOutput }}
+                        />
                     </div>
                 </div>
             </div>
