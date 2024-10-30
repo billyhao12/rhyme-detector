@@ -1,3 +1,7 @@
+/**
+ * Constants file to store strings as variables.
+ */
+
 export const HTTP = {
     ENDPOINT: {
         MULTISYLLABLE: "rhymes/multisyllable"

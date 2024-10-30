@@ -1,3 +1,7 @@
+/**
+ * Basic layout of the home page
+ */
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

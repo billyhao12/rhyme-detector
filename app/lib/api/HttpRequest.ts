@@ -1,3 +1,8 @@
+/**
+ * Base HttpRequest class contains a `createConfig` method to create the axios config object
+ * and `makeRequest` to call axios with the config.
+ */
+
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { BASE_URL } from "../constants";
 

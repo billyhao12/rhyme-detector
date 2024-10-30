@@ -1,3 +1,7 @@
+/**
+ * Extends HttpRequest and contains a method that makes a call to the multisyllable endpoint.
+ */
+
 import HttpRequest from "./HttpRequest";
 import { HTTP } from "../constants";
 
