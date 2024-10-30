@@ -13,7 +13,11 @@ export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
     const [lyricsOutput, setLyricsOutput] = useState<Array<JSX.Element>>([]);
 
-    const createClsxForWord = (style: Array<string>) => {
+    /**
+     * @param style - an array of styles (e.g. ["bold", "italic"])
+     * @returns clsxResult - an array of strings consisting of class names
+     */
+    const createClsxForWord = (style: Array<string>): Array<string> => {
         let clsxResult = [];
 
         let containsTwoTextDecorations = false;
@@ -35,11 +39,26 @@ export default function Home() {
         return clsxResult;
     };
 
-    const createSpanEl = (word: string, style: Array<string>) => {
+    /**
+     * @param word - word will be wrapped in a span element
+     * @param style - array of class names returned from `createClsxForWord`
+     * @returns a span element containing a word and a className with the appropriate styles
+     */
+    const createSpanEl = (word: string, style: Array<string>): JSX.Element => {
         const clsxResult = createClsxForWord(style);
         return <span className={clsx(...clsxResult)}>{word}</span>;
     };
 
+    /**
+     * Calls the multisyllable API endpoint and creates a span element
+     * with the appropriate styles for each word.
+     *
+     * Sets the lyricsOutput state to an array of Fragment elements with a <br />
+     * element separating the lines. Fragment elements contain span elements
+     * separated by spaces.
+     *
+     * @param e - Event object
+     */
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         const axiosData = await multisyllableApi.highlightMultisyllableRhymes({
@@ -99,7 +118,9 @@ export default function Home() {
                     <div className={styles.lyricsOutputContainer}>
                         <div className="py-4">Highlighted rhymes</div>
                         <div className={styles.lyricsOutput}>
-                            {lyricsOutput.map((spanEl) => spanEl)}
+                            {lyricsOutput.map((element, index) => (
+                                <Fragment key={index}>{element}</Fragment>
+                            ))}
                         </div>
                     </div>
                 </div>
