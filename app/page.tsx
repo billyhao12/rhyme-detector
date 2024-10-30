@@ -1,3 +1,8 @@
+/**
+ * Contains form elements for user to interact with and highlight rhymes.
+ * Makes calls to the backend server.
+ */
+
 "use client";
 import { Fragment, useState } from "react";
 import styles from "./page.module.sass";
@@ -8,7 +13,7 @@ export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
     const [lyricsOutput, setLyricsOutput] = useState<Array<JSX.Element>>([]);
 
-    const createClsxForWord = (word: string, style: Array<string>) => {
+    const createClsxForWord = (style: Array<string>) => {
         let clsxResult = [];
 
         let containsTwoTextDecorations = false;
@@ -31,7 +36,7 @@ export default function Home() {
     };
 
     const createSpanEl = (word: string, style: Array<string>) => {
-        const clsxResult = createClsxForWord(word, style);
+        const clsxResult = createClsxForWord(style);
         return <span className={clsx(...clsxResult)}>{word}</span>;
     };
 
