@@ -4,6 +4,7 @@
 
 export const HTTP = {
     ENDPOINT: {
+        MONOSYLLABLE: "rhymes/monosyllable",
         MULTISYLLABLE: "rhymes/multisyllable"
     },
     METHOD: {
