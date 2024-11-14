@@ -9,10 +9,14 @@ import styles from "./page.module.sass";
 import clsx from "clsx";
 import multisyllableApi from "./lib/api/Multisyllable";
 import Dropdown from "./lib/components/dropdown";
+import { RHYME_STYLE_OPTIONS } from "./lib/constants";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
     const [lyricsOutput, setLyricsOutput] = useState<Array<JSX.Element>>([]);
+    const [rhymeStyle, setRhymeStyle] = useState(
+        RHYME_STYLE_OPTIONS.SELECT_A_RHYME_STYLE
+    );
 
     /**
      * @param style - an array of styles (e.g. ["bold", "italic"])
@@ -108,7 +112,10 @@ export default function Home() {
                             />
                         </div>
                         <div className={styles.middleContainer}>
-                            <Dropdown />
+                            <Dropdown
+                                rhymeStyle={rhymeStyle}
+                                setRhymeStyle={setRhymeStyle}
+                            />
                             <button
                                 type="submit"
                                 className={clsx(styles.btn, styles.btnBlue)}
