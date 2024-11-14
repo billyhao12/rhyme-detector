@@ -8,6 +8,7 @@ import { Fragment, useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
 import multisyllableApi from "./lib/api/Multisyllable";
+import Dropdown from "./lib/components/dropdown";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
@@ -107,6 +108,7 @@ export default function Home() {
                             />
                         </div>
                         <div className={styles.middleContainer}>
+                            <Dropdown />
                             <button
                                 type="submit"
                                 className={clsx(styles.btn, styles.btnBlue)}
