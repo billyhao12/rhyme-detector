@@ -7,6 +7,7 @@
 import { Fragment, useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
+import monosyllableApi from "./lib/api/Monosyllable";
 import multisyllableApi from "./lib/api/Multisyllable";
 import RhymeStyleDropdown from "./lib/components/dropdown";
 import { RHYME_STYLE_OPTIONS } from "./lib/constants";
@@ -54,6 +55,34 @@ export default function Home() {
         return <span className={clsx(...clsxResult)}>{word}</span>;
     };
 
+    const highlightMonosyllableRhymes = async () => {
+        const axiosData = await monosyllableApi.highlightMonosyllableRhymes({
+            lyrics: lyricsInput
+        });
+
+        const outputLyricsData = axiosData?.data?.lyrics;
+        const lyricsOutputInProgress = [];
+        if (outputLyricsData) {
+            for (let i = 0; i < outputLyricsData.length; i++) {
+                const line = outputLyricsData[i];
+                for (let j = 0; j < line.length; j++) {
+                    const spanEl = (
+                        <Fragment>
+                            {createSpanEl(line[j].word, line[j].style)}
+                            {/* add a space after the span element if it's not the last word in the line */}
+                            {j < line.length - 1 ? " " : ""}
+                        </Fragment>
+                    );
+
+                    lyricsOutputInProgress.push(spanEl);
+                }
+                lyricsOutputInProgress.push(<br />);
+            }
+
+            setLyricsOutput(lyricsOutputInProgress);
+        }
+    };
+
     /**
      * Calls the multisyllable API endpoint and creates a span element
      * with the appropriate styles for each word.
@@ -99,7 +128,7 @@ export default function Home() {
         e.preventDefault();
 
         if (rhymeStyle === RHYME_STYLE_OPTIONS.MONOSYLLABLE) {
-            // handle monosyllable option
+            await highlightMonosyllableRhymes();
         } else if (rhymeStyle === RHYME_STYLE_OPTIONS.MULTISYLLABLE) {
             await highlightMultisyllableRhymes();
         }
