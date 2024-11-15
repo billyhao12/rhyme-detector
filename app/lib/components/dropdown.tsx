@@ -1,13 +1,21 @@
+/**
+ * A dropdown UI component to set the rhyme style
+ * Based on code from https://tailwindui.com/components/application-ui/elements/dropdowns
+ */
+
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { RHYME_STYLE_OPTIONS } from "../constants";
 
-interface IDropdown {
+interface IRhymeStyleDropdown {
     rhymeStyle: RHYME_STYLE_OPTIONS;
     setRhymeStyle: React.Dispatch<React.SetStateAction<RHYME_STYLE_OPTIONS>>;
 }
 
-export default function Dropdown({ rhymeStyle, setRhymeStyle }: IDropdown) {
+export default function RhymeStyleDropdown({
+    rhymeStyle,
+    setRhymeStyle
+}: IRhymeStyleDropdown) {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>

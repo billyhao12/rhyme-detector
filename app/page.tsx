@@ -8,7 +8,7 @@ import { Fragment, useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
 import multisyllableApi from "./lib/api/Multisyllable";
-import Dropdown from "./lib/components/dropdown";
+import RhymeStyleDropdown from "./lib/components/dropdown";
 import { RHYME_STYLE_OPTIONS } from "./lib/constants";
 
 export default function Home() {
@@ -112,7 +112,7 @@ export default function Home() {
                             />
                         </div>
                         <div className={styles.middleContainer}>
-                            <Dropdown
+                            <RhymeStyleDropdown
                                 rhymeStyle={rhymeStyle}
                                 setRhymeStyle={setRhymeStyle}
                             />
