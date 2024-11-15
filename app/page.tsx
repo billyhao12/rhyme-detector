@@ -61,11 +61,8 @@ export default function Home() {
      * Sets the lyricsOutput state to an array of Fragment elements with a <br />
      * element separating the lines. Fragment elements contain span elements
      * separated by spaces.
-     *
-     * @param e - Event object
      */
-    const handleSubmit = async (e: React.SyntheticEvent) => {
-        e.preventDefault();
+    const highlightMultisyllableRhymes = async () => {
         const axiosData = await multisyllableApi.highlightMultisyllableRhymes({
             lyrics: lyricsInput
         });
@@ -90,6 +87,21 @@ export default function Home() {
             }
 
             setLyricsOutput(lyricsOutputInProgress);
+        }
+    };
+
+    /**
+     * Highlights rhymes depending on the rhyme style selected.
+     *
+     * @param e - Event object
+     */
+    const handleSubmit = async (e: React.SyntheticEvent) => {
+        e.preventDefault();
+
+        if (rhymeStyle === RHYME_STYLE_OPTIONS.MONOSYLLABLE) {
+            // handle monosyllable option
+        } else if (rhymeStyle === RHYME_STYLE_OPTIONS.MULTISYLLABLE) {
+            await highlightMultisyllableRhymes();
         }
     };
 
