@@ -168,6 +168,11 @@ export default function Home() {
                             <button
                                 type="submit"
                                 className={clsx(styles.btn, styles.btnBlue)}
+                                disabled={
+                                    !lyricsInput ||
+                                    rhymeStyle ===
+                                        RHYME_STYLE_OPTIONS.SELECT_A_RHYME_STYLE
+                                }
                             >
                                 Highlight Rhymes
                             </button>
