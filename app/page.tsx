@@ -55,6 +55,14 @@ export default function Home() {
         return <span className={clsx(...clsxResult)}>{word}</span>;
     };
 
+    /**
+     * Calls the monosyllable API endpoint and creates a span element
+     * with the appropriate styles for each word.
+     *
+     * Sets the lyricsOutput state to an array of Fragment elements with a <br />
+     * element separating the lines. Fragment elements contain span elements
+     * separated by spaces.
+     */
     const highlightMonosyllableRhymes = async () => {
         const axiosData = await monosyllableApi.highlightMonosyllableRhymes({
             lyrics: lyricsInput
