@@ -9,15 +9,13 @@ import styles from "./page.module.sass";
 import clsx from "clsx";
 import monosyllableApi from "./lib/api/Monosyllable";
 import multisyllableApi from "./lib/api/Multisyllable";
-import RhymeStyleDropdown from "./lib/components/dropdown";
-import { RHYME_STYLE_OPTIONS } from "./lib/constants";
+import RhymeTypesRadioGroup from "./lib/components/rhymeTypesRadioGroup";
+import { RHYME_TYPE_OPTIONS } from "./lib/constants";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
     const [lyricsOutput, setLyricsOutput] = useState<Array<JSX.Element>>([]);
-    const [rhymeStyle, setRhymeStyle] = useState(
-        RHYME_STYLE_OPTIONS.SELECT_A_RHYME_STYLE
-    );
+    const [rhymeType, setRhymeType] = useState(RHYME_TYPE_OPTIONS.MONOSYLLABLE);
 
     /**
      * @param style - an array of styles (e.g. ["bold", "italic"])
@@ -128,16 +126,16 @@ export default function Home() {
     };
 
     /**
-     * Highlights rhymes depending on the rhyme style selected.
+     * Highlights rhymes depending on the rhyme type selected.
      *
      * @param e - Event object
      */
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
-        if (rhymeStyle === RHYME_STYLE_OPTIONS.MONOSYLLABLE) {
+        if (rhymeType === RHYME_TYPE_OPTIONS.MONOSYLLABLE) {
             await highlightMonosyllableRhymes();
-        } else if (rhymeStyle === RHYME_STYLE_OPTIONS.MULTISYLLABLE) {
+        } else if (rhymeType === RHYME_TYPE_OPTIONS.MULTISYLLABLE) {
             await highlightMultisyllableRhymes();
         }
     };
@@ -161,18 +159,14 @@ export default function Home() {
                             />
                         </div>
                         <div className={styles.middleContainer}>
-                            <RhymeStyleDropdown
-                                rhymeStyle={rhymeStyle}
-                                setRhymeStyle={setRhymeStyle}
+                            <RhymeTypesRadioGroup
+                                rhymeType={rhymeType}
+                                setRhymeType={setRhymeType}
                             />
                             <button
                                 type="submit"
                                 className={clsx(styles.btn, styles.btnBlue)}
-                                disabled={
-                                    !lyricsInput ||
-                                    rhymeStyle ===
-                                        RHYME_STYLE_OPTIONS.SELECT_A_RHYME_STYLE
-                                }
+                                disabled={!lyricsInput}
                             >
                                 Highlight Rhymes
                             </button>
