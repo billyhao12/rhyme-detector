@@ -3,7 +3,7 @@
  * Based on code from https://flowbite.com/docs/forms/radio/#radio-list-group
  */
 
-import React, { Fragment } from "react";
+import React from "react";
 import { RHYME_TYPE_OPTIONS } from "../constants";
 
 interface IRhymeTypesRadioGroup {
@@ -16,8 +16,8 @@ const RhymeTypesRadioGroup = ({
     setRhymeType
 }: IRhymeTypesRadioGroup) => {
     return (
-        <Fragment>
-            <h3 className="text-white">Select a rhyme type</h3>
+        <div>
+            <h3 className="mb-3 text-white text-center">Select a rhyme type</h3>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-slate-50 rounded-lg overflow-hidden">
                 <li className="w-full border-b border-gray-300 rounded-t-lg">
                     <div className="flex items-center ps-3">
@@ -70,7 +70,7 @@ const RhymeTypesRadioGroup = ({
                     </div>
                 </li>
             </ul>
-        </Fragment>
+        </div>
     );
 };
 
