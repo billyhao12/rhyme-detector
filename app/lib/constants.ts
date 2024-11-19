@@ -14,8 +14,7 @@ export const HTTP = {
     }
 };
 
-export enum RHYME_STYLE_OPTIONS {
-    SELECT_A_RHYME_STYLE = "Select a Rhyme Style",
+export enum RHYME_TYPE_OPTIONS {
     MONOSYLLABLE = "Monosyllable",
     MULTISYLLABLE = "Multisyllable"
 };
