@@ -9,8 +9,8 @@ const RhymeTypesRadioGroup = () => {
     return (
         <Fragment>
             <h3 className="text-white">Select a rhyme type</h3>
-            <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
-                <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+            <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg overflow-hidden">
+                <li className="w-full border-b border-gray-200 rounded-t-lg">
                     <div className="flex items-center ps-3">
                         <input
                             id="monosyllable"
