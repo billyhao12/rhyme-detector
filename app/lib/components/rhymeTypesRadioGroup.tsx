@@ -1,15 +1,15 @@
 /**
- * A radio list group component
+ * A radio list group component for rhyme types
  * Based on code from https://flowbite.com/docs/forms/radio/#radio-list-group
  */
 
 import React, { Fragment } from "react";
 
-const RadioListGroup = () => {
+const RhymeTypesRadioGroup = () => {
     return (
         <Fragment>
-            <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">
-                Identification
+            <h3 className="mb-4 font-semibold text-white">
+                Select a rhyme type
             </h3>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
@@ -85,4 +85,4 @@ const RadioListGroup = () => {
     );
 };
 
-export default RadioListGroup;
+export default RhymeTypesRadioGroup;

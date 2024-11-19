@@ -9,7 +9,7 @@ import styles from "./page.module.sass";
 import clsx from "clsx";
 import monosyllableApi from "./lib/api/Monosyllable";
 import multisyllableApi from "./lib/api/Multisyllable";
-import RadioListGroup from "./lib/components/radioListGroup";
+import RhymeTypesRadioGroup from "./lib/components/rhymeTypesRadioGroup";
 import { RHYME_STYLE_OPTIONS } from "./lib/constants";
 
 export default function Home() {
@@ -161,7 +161,7 @@ export default function Home() {
                             />
                         </div>
                         <div className={styles.middleContainer}>
-                            <RadioListGroup />
+                            <RhymeTypesRadioGroup />
                             <button
                                 type="submit"
                                 className={clsx(styles.btn, styles.btnBlue)}
