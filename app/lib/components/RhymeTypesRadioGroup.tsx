@@ -17,7 +17,9 @@ const RhymeTypesRadioGroup = ({
 }: IRhymeTypesRadioGroup) => {
     return (
         <div>
-            <h3 className="mb-3 text-white text-center">Select a rhyme type</h3>
+            <h3 className="mb-3 text-white font-bold text-center">
+                Select a rhyme type
+            </h3>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-slate-50 rounded-lg overflow-hidden">
                 <li className="w-full border-b border-gray-300 rounded-t-lg">
                     <div className="flex items-center ps-3">
@@ -40,7 +42,7 @@ const RhymeTypesRadioGroup = ({
                             htmlFor={RHYME_TYPE_OPTIONS.MONOSYLLABLE}
                             className="w-full py-3 ms-2 text-sm font-medium text-gray-900"
                         >
-                            Monosyllable
+                            Perfect Monosyllable
                         </label>
                     </div>
                 </li>

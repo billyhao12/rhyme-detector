@@ -11,6 +11,7 @@ import monosyllableApi from "./lib/api/Monosyllable";
 import multisyllableApi from "./lib/api/Multisyllable";
 import RhymeTypesRadioGroup from "./lib/components/RhymeTypesRadioGroup";
 import { RHYME_TYPE_OPTIONS } from "./lib/constants";
+import HowToUse from "./lib/components/HowToUse";
 
 export default function Home() {
     const [lyricsInput, setLyricsInput] = useState("");
@@ -144,10 +145,14 @@ export default function Home() {
         <main className={styles.main}>
             <h1 className={styles.title}>Rhyme Detector</h1>
             <div className={styles.mainContainer}>
+                <HowToUse />
                 <div className={styles.mainGrid}>
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.lyricsInputContainer}>
-                            <label htmlFor="lyricsInput" className="block py-4">
+                            <label
+                                htmlFor="lyricsInput"
+                                className="block py-4 font-bold"
+                            >
                                 Enter lyrics to highlight below
                             </label>
                             <textarea
@@ -173,7 +178,7 @@ export default function Home() {
                         </div>
                     </form>
                     <div className={styles.lyricsOutputContainer}>
-                        <div className="py-4">Highlighted rhymes</div>
+                        <div className="py-4 font-bold">Highlighted rhymes</div>
                         <div className={styles.lyricsOutput}>
                             {lyricsOutput.map((element, index) => (
                                 <Fragment key={index}>{element}</Fragment>
