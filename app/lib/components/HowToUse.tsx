@@ -10,8 +10,7 @@ const HowToUse = () => {
             <p>
                 Rhyme Detector is an application capable of highlighting
                 monosyllable and multisyllable internal and line-final rhymes in
-                rap lyrics. Below is a short description of each rhyme type that
-                the app detects.
+                rap lyrics. Below is a short description of each rhyme type.
             </p>
 
             <br />
