@@ -9,7 +9,7 @@ import styles from "./page.module.sass";
 import clsx from "clsx";
 import monosyllableApi from "./lib/api/Monosyllable";
 import multisyllableApi from "./lib/api/Multisyllable";
-import RhymeTypesRadioGroup from "./lib/components/rhymeTypesRadioGroup";
+import RhymeTypesRadioGroup from "./lib/components/RhymeTypesRadioGroup";
 import { RHYME_TYPE_OPTIONS } from "./lib/constants";
 
 export default function Home() {
