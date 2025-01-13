@@ -3,6 +3,7 @@
  * Makes calls to the backend server.
  * 
  * Source for loading spinner: https://flowbite.com/docs/components/spinner/
+ * Source for error toast: https://flowbite.com/docs/components/toast/#colors
  */
 
 "use client";
