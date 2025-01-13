@@ -28,13 +28,8 @@ class Monosyllable extends HttpRequest {
             ENDPOINT.MONOSYLLABLE,
             lyricsInput
         );
-        try {
-            const response = await this.makeRequest(config);
-            return response?.data;
-        } catch (err) {
-            console.error(err);
-            return err;
-        }
+        const response = await this.makeRequest(config);
+        return response?.data;
     }
 }
 
