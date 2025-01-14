@@ -7,7 +7,7 @@
  */
 
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, RefObject, useRef, useState } from "react";
 import styles from "./page.module.sass";
 import clsx from "clsx";
 import monosyllableApi from "./lib/api/Monosyllable";
@@ -25,6 +25,19 @@ export default function Home() {
     const [displayErrorToast, setDisplayErrorToast] = useState(false);
     const [errorName, setErrorName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    const lyricsInputRef = useRef<HTMLTextAreaElement>(null);
+    const lyricsOutputRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = (
+        source: RefObject<HTMLTextAreaElement | HTMLDivElement>,
+        target: RefObject<HTMLTextAreaElement | HTMLDivElement>
+    ) => {
+        if (source.current && target.current) {
+            target.current.scrollTop = source.current.scrollTop;
+            target.current.scrollLeft = source.current.scrollLeft;
+        }
+    };
 
     /**
      * @param style - an array of styles (e.g. ["bold", "italic"])
@@ -110,6 +123,11 @@ export default function Home() {
 
             setLyricsOutput(lyricsOutputInProgress);
         }
+
+        if (lyricsInputRef.current) {
+            lyricsInputRef.current.scrollTop = 0;
+            lyricsInputRef.current.scrollLeft = 0;
+        }
     };
 
     /**
@@ -159,6 +177,11 @@ export default function Home() {
             }
 
             setLyricsOutput(lyricsOutputInProgress);
+        }
+
+        if (lyricsInputRef.current) {
+            lyricsInputRef.current.scrollTop = 0;
+            lyricsInputRef.current.scrollLeft = 0;
         }
     };
 
@@ -240,8 +263,15 @@ export default function Home() {
                             <textarea
                                 id="lyricsInput"
                                 name="lyricsInput"
+                                ref={lyricsInputRef}
                                 value={lyricsInput}
                                 onChange={(e) => setLyricsInput(e.target.value)}
+                                onScroll={() =>
+                                    handleScroll(
+                                        lyricsInputRef,
+                                        lyricsOutputRef
+                                    )
+                                }
                                 className={styles.lyricsInput}
                             />
                         </div>
@@ -284,7 +314,13 @@ export default function Home() {
                     </form>
                     <div className={styles.lyricsOutputContainer}>
                         <div className="py-4 font-bold">Highlighted rhymes</div>
-                        <div className={styles.lyricsOutput}>
+                        <div
+                            className={styles.lyricsOutput}
+                            ref={lyricsOutputRef}
+                            onScroll={() =>
+                                handleScroll(lyricsOutputRef, lyricsInputRef)
+                            }
+                        >
                             {lyricsOutput.map((element, index) => (
                                 <Fragment key={index}>{element}</Fragment>
                             ))}
