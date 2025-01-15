@@ -9,27 +9,30 @@ const HowToUse = () => {
         <div className="flex flex-col justify-center">
             <p>
                 Rhyme Detector is an application capable of highlighting
-                monosyllable and multisyllable internal and line-final rhymes in
-                rap lyrics. Below is a short description of each rhyme type.
+                monosyllable and multisyllable rhymes in rap lyrics. Simply type
+                or copy and paste lyrics that you would like to highlight. Below
+                is a short description of each rhyme type.
             </p>
 
             <br />
 
             <strong>Perfect Monosyllable</strong>
             <p>
-                The algorithm for the perfect monosyllable rhyme type examines
-                the syllables for each pair of lines and highlights words that
-                contain at least one perfect monosyllable rhyme. This means that
-                the vowel and ending consonants sounds for at least one syllable
-                must match. An example of this is the word &quot;mind&quot;
-                rhyming with &quot;blind&quot;.
+                This algorithm examines syllables for each pair of lines and
+                highlights words that contain at least one perfect monosyllable
+                rhyme. This means that vowel and ending consonant sounds for at
+                least one syllable must match. For example, &quot;mind&quot; and
+                &quot;blind&quot; form a perfect monosyllable pair. Keep in mind
+                that words with multiple syllables may also contain perfect
+                monosyllable rhymes. &quot;Mind&quot; forms a pair with
+                &quot;mankind&quot; even though not all the syllables rhyme.
             </p>
 
             <br />
 
             <strong>Multisyllable</strong>
             <p>
-                The multisyllable rhyme type is based on the algorithm developed
+                The multisyllable rhyme type is based on an algorithm developed
                 by{" "}
                 <a
                     className="underline hover:text-slate-200"
