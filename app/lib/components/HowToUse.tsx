@@ -16,7 +16,7 @@ const HowToUse = () => {
 
             <br />
 
-            <strong>Perfect Monosyllable</strong>
+            <h2 className="font-bold">Perfect Monosyllable</h2>
             <p>
                 This algorithm examines syllables for each pair of lines and
                 highlights words that contain at least one perfect monosyllable
@@ -30,12 +30,12 @@ const HowToUse = () => {
 
             <br />
 
-            <strong>Multisyllable</strong>
+            <h2 className="font-bold">Multisyllable</h2>
             <p>
                 The multisyllable rhyme type is based on an algorithm developed
                 by{" "}
                 <a
-                    className="underline hover:text-slate-200"
+                    className="underline hover:opacity-80"
                     href="https://www.ece.uvic.ca/~aalbu/computer%20vision%202010/automatic%20detection%20of%20rhymes%20in%20rap%20lyrics.pdf"
                 >
                     Hirjee and Brown
