@@ -47,7 +47,7 @@ const HowToUse = () => {
                 heavy&quot;. In addition, multiple text decorations indicate
                 that a word or phrase contains more than one rhyme pair. The
                 text decorations used are: bold, italics, red text, underline,
-                and strikethrough.
+                and a yellow background color.
             </p>
         </div>
     );
