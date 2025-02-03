@@ -17,7 +17,9 @@ const RhymeTypesRadioGroup = ({
 }: IRhymeTypesRadioGroup) => {
     return (
         <div>
-            <h2 className="mb-3 font-bold text-center">Select a rhyme type</h2>
+            <div className="mb-3 font-bold text-center">
+                Select a rhyme type
+            </div>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-slate-50 rounded-lg overflow-hidden">
                 <li className="w-full border-b border-gray-300 rounded-t-lg">
                     <div className="flex items-center ps-3">

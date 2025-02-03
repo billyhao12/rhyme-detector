@@ -16,7 +16,7 @@ const HowToUse = () => {
 
             <br />
 
-            <strong>Perfect Monosyllable</strong>
+            <h2 className="font-bold">Perfect Monosyllable</h2>
             <p>
                 This algorithm examines syllables for each pair of lines and
                 highlights words that contain at least one perfect monosyllable
@@ -30,7 +30,7 @@ const HowToUse = () => {
 
             <br />
 
-            <strong>Multisyllable</strong>
+            <h2 className="font-bold">Multisyllable</h2>
             <p>
                 The multisyllable rhyme type is based on an algorithm developed
                 by{" "}
