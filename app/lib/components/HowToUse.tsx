@@ -31,7 +31,7 @@ const HowToUse = () => {
             <br />
 
             <div className="flex justify-center">
-                <div className="w-1/3 border border-solid border-gray-500 text-black p-4 bg-slate-50">
+                <div className="flex flex-col">
                     <p>
                         <span className={styles.highlight}>A</span> child is
                         born with no state{" "}
@@ -90,7 +90,7 @@ const HowToUse = () => {
             <br />
 
             <div className="flex justify-center">
-                <div className="w-1/3 border border-solid border-gray-500 text-black p-4 bg-slate-50">
+                <div className="flex flex-col">
                     <p>
                         <span>His</span>{" "}
                         <span className={styles.bold}>palms</span>{" "}
