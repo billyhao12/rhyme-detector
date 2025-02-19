@@ -144,32 +144,44 @@ const HowToUse = () => {
 
             <p>
                 In this case, the following rhyme pairs are detected with their
-                corresponding text decoration:
+                corresponding text decorations:
             </p>
             <br />
-            <div className="flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-                    <p>Bold:</p>
-                    <p>palms are sweaty ~ arms are heavy</p>
+            <div className="flex flex-col items-center gap-y-2">
+                <p>
+                    <span className={styles.bold}>palms are sweaty</span> ~{" "}
+                    <span className={styles.bold}>arms are heavy</span>
+                </p>
 
-                    <p>Italic:</p>
-                    <p>arms ~ vomit</p>
+                <p>
+                    <span className={styles.italic}>arms</span> ~{" "}
+                    <span className={styles.italic}>vomit</span>
+                </p>
 
-                    <p>Red text:</p>
-                    <p>sweaty ~ sweater</p>
+                <p>
+                    <span className={styles.red}>sweaty</span> ~{" "}
+                    <span className={styles.red}>sweater</span>
+                </p>
 
-                    <p>Underline:</p>
-                    <p>heavy ~ already</p>
+                <p>
+                    <span className={styles.underline}>heavy</span> ~{" "}
+                    <span className={styles.underline}>already</span>
+                </p>
 
-                    <p>Yellow background color:</p>
-                    <p>arms are heavy ~ mom's spaghetti</p>
+                <p>
+                    <span className={styles.highlight}>arms are heavy</span> ~{" "}
+                    <span className={styles.highlight}>mom's spaghetti</span>
+                </p>
 
-                    <p>Bold:</p>
-                    <p>vomit ~ mom's</p>
+                <p>
+                    <span className={styles.bold}>vomit</span> ~{" "}
+                    <span className={styles.bold}>mom's</span>
+                </p>
 
-                    <p>Italic:</p>
-                    <p>already ~ spaghetti</p>
-                </div>
+                <p>
+                    <span className={styles.italic}>already</span> ~{" "}
+                    <span className={styles.italic}>spaghetti</span>
+                </p>
             </div>
 
             <br />
