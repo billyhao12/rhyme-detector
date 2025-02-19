@@ -49,9 +49,9 @@ const HowToUse = () => {
 
             <br />
 
-            <p>In this case, the following rhyme pairs are highlighted:</p>
+            <p>In this case, the following rhyme pairs are detected:</p>
             <br />
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-y-2">
                 <p>A ~ the</p>
                 <p>of ~ of</p>
                 <p>mind ~ Blind</p>
@@ -74,9 +74,15 @@ const HowToUse = () => {
                 which examines syllables for each pair of lines and highlights
                 imperfect and multisyllable rhymes in addition to perfect
                 monosyllable ones. Rhymes can span multiple words. The algorithm
-                rotates through five text decorations when highlighting rhymes:
-                bold, italic, red text, underline, and a yellow background
-                color. Words or phrases that contain multiple text decorations
+                rotates through five text decorations when highlighting rhymes:{" "}
+                <span className={styles.bold}>bold</span>,{" "}
+                <span className={styles.italic}>italic</span>,{" "}
+                <span className={styles.red}>red text</span>,{" "}
+                <span className={styles.underline}>underline</span>, and{" "}
+                <span className={styles.highlight}>
+                    a yellow background color
+                </span>
+                . Words or phrases that contain multiple text decorations
                 indicate the presence of more than one rhyme pair. Below is an
                 example from the song "Lose Yourself" by Eminem:
             </p>
@@ -137,27 +143,31 @@ const HowToUse = () => {
             <br />
 
             <p>
-                In this case, the following rhyme pairs with their corresponding
-                text decoration are highlighted:
+                In this case, the following rhyme pairs are detected with their
+                corresponding text decoration:
             </p>
             <br />
-            <div className="flex justify-center gap-x-4">
-                <div>
+            <div className="flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                     <p>Bold:</p>
-                    <p>Italic:</p>
-                    <p>Red text:</p>
-                    <p>Underline:</p>
-                    <p>Yellow background color:</p>
-                    <p>Bold:</p>
-                    <p>Italic:</p>
-                </div>
-                <div>
                     <p>palms are sweaty ~ arms are heavy</p>
+
+                    <p>Italic:</p>
                     <p>arms ~ vomit</p>
+
+                    <p>Red text:</p>
                     <p>sweaty ~ sweater</p>
+
+                    <p>Underline:</p>
                     <p>heavy ~ already</p>
+
+                    <p>Yellow background color:</p>
                     <p>arms are heavy ~ mom's spaghetti</p>
+
+                    <p>Bold:</p>
                     <p>vomit ~ mom's</p>
+
+                    <p>Italic:</p>
                     <p>already ~ spaghetti</p>
                 </div>
             </div>
