@@ -3,6 +3,9 @@
  */
 
 import React from "react";
+import clsx from "clsx";
+
+import styles from "../../page.module.sass";
 
 const HowToUse = () => {
     return (
@@ -21,12 +24,40 @@ const HowToUse = () => {
                 This algorithm examines syllables for each pair of lines and
                 highlights words that contain at least one perfect monosyllable
                 rhyme. This means that vowel and ending consonant sounds for at
-                least one syllable must match. For example, &quot;mind&quot; and
-                &quot;blind&quot; form a perfect monosyllable pair. Keep in mind
-                that words with multiple syllables may also contain perfect
-                monosyllable rhymes. &quot;Mind&quot; forms a pair with
-                &quot;mankind&quot; even though not all the syllables rhyme.
+                least one syllable must match. Below is an example from the song
+                "The Message" by Grandmaster Flash and The Furious Five:
             </p>
+
+            <br />
+
+            <div className="flex justify-center">
+                <div className="w-1/3 border border-solid border-gray-500 text-black p-4 bg-slate-50">
+                    <p>
+                        <span className={styles.highlight}>A</span> child is
+                        born with no state{" "}
+                        <span className={styles.highlight}>of</span>{" "}
+                        <span className={styles.highlight}>mind</span>
+                    </p>
+                    <p>
+                        <span className={styles.highlight}>Blind</span> to{" "}
+                        <span className={styles.highlight}>the</span> ways{" "}
+                        <span className={styles.highlight}>of</span>{" "}
+                        <span className={styles.highlight}>mankind</span>
+                    </p>
+                </div>
+            </div>
+
+            <br />
+
+            <p>In this case, the following rhyme pairs are highlighted:</p>
+            <br />
+            <div className="flex flex-col items-center">
+                <p>A ~ the</p>
+                <p>of ~ of</p>
+                <p>mind ~ Blind</p>
+                <p>mind ~ mankind</p>
+                <p>Blind ~ mankind</p>
+            </div>
 
             <br />
 
@@ -40,15 +71,98 @@ const HowToUse = () => {
                 >
                     Hirjee and Brown
                 </a>{" "}
-                which highlights imperfect and multisyllable rhymes in addition
-                to perfect monosyllable ones. This algorithm also examines two
-                lines at a time. Rhymes can span multiple words. For example,
-                &quot;palms are sweaty&quot; rhymes with &quot;arms are
-                heavy&quot;. In addition, multiple text decorations indicate
-                that a word or phrase contains more than one rhyme pair. The
-                text decorations used are: bold, italics, red text, underline,
-                and a yellow background color.
+                which examines syllables for each pair of lines and highlights
+                imperfect and multisyllable rhymes in addition to perfect
+                monosyllable ones. Rhymes can span multiple words. The algorithm
+                rotates through five text decorations when highlighting rhymes:
+                bold, italic, red text, underline, and a yellow background
+                color. Words or phrases that contain multiple text decorations
+                indicate the presence of more than one rhyme pair. Below is an
+                example from the song "Lose Yourself" by Eminem:
             </p>
+
+            <br />
+
+            <div className="flex justify-center">
+                <div className="w-1/3 border border-solid border-gray-500 text-black p-4 bg-slate-50">
+                    <p>
+                        <span>His</span>{" "}
+                        <span className={styles.bold}>palms</span>{" "}
+                        <span className={styles.bold}>are</span>{" "}
+                        <span className={clsx(styles.bold, styles.red)}>
+                            sweaty,
+                        </span>{" "}
+                        knees weak,{" "}
+                        <span
+                            className={clsx(
+                                styles.bold,
+                                styles.italic,
+                                styles.highlight
+                            )}
+                        >
+                            arms
+                        </span>{" "}
+                        <span className={clsx(styles.bold, styles.highlight)}>
+                            are
+                        </span>{" "}
+                        <span
+                            className={clsx(
+                                styles.bold,
+                                styles.underline,
+                                styles.highlight
+                            )}
+                        >
+                            heavy
+                        </span>
+                    </p>
+                    <p>
+                        There's{" "}
+                        <span className={clsx(styles.bold, styles.italic)}>
+                            vomit
+                        </span>{" "}
+                        on his <span className={styles.red}>sweater</span>{" "}
+                        <span className={clsx(styles.italic, styles.underline)}>
+                            already,
+                        </span>{" "}
+                        <span className={clsx(styles.bold, styles.highlight)}>
+                            mom's
+                        </span>{" "}
+                        <span className={clsx(styles.italic, styles.highlight)}>
+                            spaghetti
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <br />
+
+            <p>
+                In this case, the following rhyme pairs with their corresponding
+                text decoration are highlighted:
+            </p>
+            <br />
+            <div className="flex justify-center gap-x-4">
+                <div>
+                    <p>Bold:</p>
+                    <p>Italic:</p>
+                    <p>Red text:</p>
+                    <p>Underline:</p>
+                    <p>Yellow background color:</p>
+                    <p>Bold:</p>
+                    <p>Italic:</p>
+                </div>
+                <div>
+                    <p>palms are sweaty ~ arms are heavy</p>
+                    <p>arms ~ vomit</p>
+                    <p>sweaty ~ sweater</p>
+                    <p>heavy ~ already</p>
+                    <p>arms are heavy ~ mom's spaghetti</p>
+                    <p>vomit ~ mom's</p>
+                    <p>already ~ spaghetti</p>
+                </div>
+            </div>
+
+            <br />
         </div>
     );
 };
