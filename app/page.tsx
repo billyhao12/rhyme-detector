@@ -29,6 +29,7 @@ export default function Home() {
     const [displayErrorToast, setDisplayErrorToast] = useState(false);
     const [errorName, setErrorName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [handleScrollEnabled, setHandleScrollEnabled] = useState(false);
 
     const lyricsInputRef = useRef<HTMLTextAreaElement>(null);
     const lyricsOutputRef = useRef<HTMLDivElement>(null);
@@ -189,6 +190,28 @@ export default function Home() {
         }
     };
 
+    const showMultisyllableRhymePairs = async () => {
+        let axiosData;
+        setIsShowRhymePairsLoading(true);
+
+        try {
+            axiosData = await multisyllableApi.highlightMultisyllableRhymes({
+                lyrics: lyricsInput
+            });
+        } catch (err) {
+            console.error(err);
+            if (isAxiosError(err)) {
+                setErrorName(err.name);
+                setErrorMessage(err.message);
+                setDisplayErrorToast(true);
+            }
+        } finally {
+            setIsShowRhymePairsLoading(false);
+        }
+
+        console.log("output rhyme pair data", axiosData?.data?.rhymePairs);
+    };
+
     /**
      * Highlights rhymes depending on the rhyme type selected.
      *
@@ -202,6 +225,27 @@ export default function Home() {
         } else if (rhymeType === RHYME_TYPE_OPTIONS.MULTISYLLABLE) {
             await highlightMultisyllableRhymes();
         }
+
+        setHandleScrollEnabled(true);
+    };
+
+    /**
+     * Displays the rhyme pairs for the selected rhyme type.
+     *
+     * @param e - Event object
+     */
+    const handleShowRhymePairsOnClick = async (e: React.SyntheticEvent) => {
+        e.preventDefault();
+
+        if (rhymeType === RHYME_TYPE_OPTIONS.MONOSYLLABLE) {
+            console.log(
+                "TODO: Implement rhyme pairs for monosyllable rhyme type"
+            );
+        } else if (rhymeType === RHYME_TYPE_OPTIONS.MULTISYLLABLE) {
+            await showMultisyllableRhymePairs();
+        }
+
+        setHandleScrollEnabled(false);
     };
 
     return (
@@ -270,12 +314,14 @@ export default function Home() {
                                 ref={lyricsInputRef}
                                 value={lyricsInput}
                                 onChange={(e) => setLyricsInput(e.target.value)}
-                                onScroll={() =>
-                                    handleScroll(
-                                        lyricsInputRef,
-                                        lyricsOutputRef
-                                    )
-                                }
+                                onScroll={() => {
+                                    if (handleScrollEnabled) {
+                                        handleScroll(
+                                            lyricsInputRef,
+                                            lyricsOutputRef
+                                        );
+                                    }
+                                }}
                                 className={styles.lyricsInput}
                             />
                         </div>
@@ -302,10 +348,7 @@ export default function Home() {
                                     )}
                                 </button>
                                 <button
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        console.log("Garfield");
-                                    }}
+                                    onClick={handleShowRhymePairsOnClick}
                                     className={clsx(styles.btn, styles.btnBlue)}
                                     disabled={
                                         !lyricsInput || isShowRhymePairsLoading
@@ -328,9 +371,14 @@ export default function Home() {
                         <div
                             className={styles.lyricsOutput}
                             ref={lyricsOutputRef}
-                            onScroll={() =>
-                                handleScroll(lyricsOutputRef, lyricsInputRef)
-                            }
+                            onScroll={() => {
+                                if (handleScrollEnabled) {
+                                    handleScroll(
+                                        lyricsOutputRef,
+                                        lyricsInputRef
+                                    );
+                                }
+                            }}
                         >
                             {lyricsOutput.map((element, index) => (
                                 <Fragment key={index}>{element}</Fragment>
