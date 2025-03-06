@@ -30,6 +30,7 @@ export default function Home() {
     const [errorName, setErrorName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [handleScrollEnabled, setHandleScrollEnabled] = useState(false);
+    const [showingRhymePairs, setShowingRhymePairs] = useState(false);
 
     const lyricsInputRef = useRef<HTMLTextAreaElement>(null);
     const lyricsOutputRef = useRef<HTMLDivElement>(null);
@@ -252,6 +253,7 @@ export default function Home() {
             await highlightMultisyllableRhymes();
         }
 
+        setShowingRhymePairs(false);
         setHandleScrollEnabled(true);
     };
 
@@ -271,6 +273,7 @@ export default function Home() {
             await showMultisyllableRhymePairs();
         }
 
+        setShowingRhymePairs(true);
         setHandleScrollEnabled(false);
     };
 
@@ -395,7 +398,11 @@ export default function Home() {
                     <div className={styles.lyricsOutputContainer}>
                         <div className="py-4 font-bold">Highlighted rhymes</div>
                         <div
-                            className={styles.lyricsOutput}
+                            className={clsx(
+                                showingRhymePairs
+                                    ? styles.lyricsOutputForRhymePairs
+                                    : styles.lyricsOutputForHighlightedRhymes
+                            )}
                             ref={lyricsOutputRef}
                             onScroll={() => {
                                 if (handleScrollEnabled) {
