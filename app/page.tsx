@@ -44,6 +44,18 @@ export default function Home() {
         }
     };
 
+    const resetScrollPosition = () => {
+        if (lyricsInputRef.current) {
+            lyricsInputRef.current.scrollTop = 0;
+            lyricsInputRef.current.scrollLeft = 0;
+        }
+
+        if (lyricsOutputRef.current) {
+            lyricsOutputRef.current.scrollTop = 0;
+            lyricsOutputRef.current.scrollLeft = 0;
+        }
+    };
+
     /**
      * @param style - an array of styles (e.g. ["bold", "italic"])
      * @returns clsxResult - an array of strings consisting of class names
@@ -129,10 +141,7 @@ export default function Home() {
             setLyricsOutput(lyricsOutputInProgress);
         }
 
-        if (lyricsInputRef.current) {
-            lyricsInputRef.current.scrollTop = 0;
-            lyricsInputRef.current.scrollLeft = 0;
-        }
+        resetScrollPosition();
     };
 
     /**
@@ -184,10 +193,7 @@ export default function Home() {
             setLyricsOutput(lyricsOutputInProgress);
         }
 
-        if (lyricsInputRef.current) {
-            lyricsInputRef.current.scrollTop = 0;
-            lyricsInputRef.current.scrollLeft = 0;
-        }
+        resetScrollPosition();
     };
 
     const showMultisyllableRhymePairs = async () => {
@@ -229,10 +235,7 @@ export default function Home() {
             setLyricsOutput(lyricsOutputInProgress);
         }
 
-        if (lyricsInputRef.current) {
-            lyricsInputRef.current.scrollTop = 0;
-            lyricsInputRef.current.scrollLeft = 0;
-        }
+        resetScrollPosition();
     };
 
     /**
