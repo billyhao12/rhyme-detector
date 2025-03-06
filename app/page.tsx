@@ -209,7 +209,30 @@ export default function Home() {
             setIsShowRhymePairsLoading(false);
         }
 
-        console.log("output rhyme pair data", axiosData?.data?.rhymePairs);
+        const outputRhymePairData = axiosData?.data?.rhymePairs;
+        const lyricsOutputInProgress = [];
+        if (outputRhymePairData) {
+            for (const pair of outputRhymePairData) {
+                lyricsOutputInProgress.push(
+                    <p>
+                        <span className={styles[pair.style]}>
+                            {pair.elementA}
+                        </span>{" "}
+                        ~{" "}
+                        <span className={styles[pair.style]}>
+                            {pair.elementB}
+                        </span>
+                    </p>
+                );
+            }
+
+            setLyricsOutput(lyricsOutputInProgress);
+        }
+
+        if (lyricsInputRef.current) {
+            lyricsInputRef.current.scrollTop = 0;
+            lyricsInputRef.current.scrollLeft = 0;
+        }
     };
 
     /**
