@@ -146,6 +146,47 @@ export default function Home() {
     };
 
     /**
+     * Gets monosyllable rhyme pairs from the API
+     * and displays each pair on a separate line.
+     */
+    const showMonosyllableRhymePairs = async () => {
+        let axiosData;
+        setIsShowRhymePairsLoading(true);
+
+        try {
+            axiosData = await monosyllableApi.highlightMonosyllableRhymes({
+                lyrics: lyricsInput
+            });
+        } catch (err) {
+            console.error(err);
+            if (isAxiosError(err)) {
+                setErrorName(err.name);
+                setErrorMessage(err.message);
+                setDisplayErrorToast(true);
+            }
+        } finally {
+            setIsShowRhymePairsLoading(false);
+        }
+
+        const outputRhymePairData = axiosData?.data?.rhymePairs;
+        const lyricsOutputInProgress = [];
+        if (outputRhymePairData) {
+            for (const pair of outputRhymePairData) {
+                lyricsOutputInProgress.push(
+                    <p>
+                        <span>{pair.elementA}</span> ~{" "}
+                        <span>{pair.elementB}</span>
+                    </p>
+                );
+            }
+
+            setLyricsOutput(lyricsOutputInProgress);
+        }
+
+        resetScrollPosition();
+    };
+
+    /**
      * Calls the multisyllable API endpoint and creates a span element
      * with the appropriate styles for each word.
      *
@@ -197,6 +238,10 @@ export default function Home() {
         resetScrollPosition();
     };
 
+    /**
+     * Gets multisyllable rhyme pairs from the API
+     * and displays each pair on a separate line with its corresponding styling.
+     */
     const showMultisyllableRhymePairs = async () => {
         let axiosData;
         setIsShowRhymePairsLoading(true);
@@ -266,9 +311,7 @@ export default function Home() {
         e.preventDefault();
 
         if (rhymeType === RHYME_TYPE_OPTIONS.MONOSYLLABLE) {
-            console.log(
-                "TODO: Implement rhyme pairs for monosyllable rhyme type"
-            );
+            await showMonosyllableRhymePairs();
         } else if (rhymeType === RHYME_TYPE_OPTIONS.MULTISYLLABLE) {
             await showMultisyllableRhymePairs();
         }
