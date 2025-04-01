@@ -31,6 +31,6 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Questions/Contributing
+## Questions
 
-This is currently a work-in-progress master's project which I expect to complete by the end of March 2025. Contributions will not be accepted in the meantime. You can contact me with questions at <billyhao12@gmail.com>.
+You can contact me with questions at <billyhao12@gmail.com>.
