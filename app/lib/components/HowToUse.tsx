@@ -10,6 +10,20 @@ import styles from "../../page.module.sass";
 const HowToUse = () => {
     return (
         <div className="flex flex-col justify-center">
+            <strong>
+                Rhyme detector is currently down to save on server costs.
+                Contact me at{" "}
+                <a
+                    className={styles.hyperlink}
+                    href="mailto:billyhao12@gmail.com"
+                >
+                    billyhao12@gmail.com
+                </a>{" "}
+                to try this out!
+            </strong>
+
+            <br />
+
             <p>
                 Rhyme Detector is an application capable of highlighting
                 monosyllable and multisyllable rhymes in rap lyrics. Simply type
